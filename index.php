@@ -7,5 +7,3 @@ $router->get('/', function() { echo 'Hello World'; });
 
 $router->run();
 ?>
-
-
