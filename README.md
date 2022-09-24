@@ -47,7 +47,7 @@ To return this view with `$text`
 class HelloWorldController {
 
     public static function index() {
-        $text = 'Hello World!';
+        $text = 'Hello World';
 
         View::render('hello/index', [
             'text' => $text,
