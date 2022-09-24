@@ -22,7 +22,7 @@ Controllers should be added to [App/Controllers/](App/Controllers/)
 
 ```php
 ...
-class ExampleController {
+class HelloWorldController {
 
     public static function index() {
         echo 'Hello World';
