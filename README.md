@@ -38,3 +38,22 @@ Views should be added to [App/Views/](App/Views/)
 ```html+php
 <h1><?php echo $text ?></h1>
 ```
+
+To return this view with `$text`
+
+`App/Controllers/HelloWorldController.php`:
+
+```php
+class HelloWorldController {
+
+    public static function index() {
+        $text = 'Hello World!';
+
+        View::render('hello/index', [
+            'text' => $text,
+        ]);
+    }
+
+}
+```
+
