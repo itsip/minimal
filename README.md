@@ -20,14 +20,12 @@ $router->get('/hello/{name}', function($name) { echo 'Hello ' . $name; });
 ```
 
 Alternatively, routes can reference a controller. The following route will look for and call `HelloWorldController::index()` in [App/Controllers/](App/Controllers/)
-
 ```php
 $router->get('/hello', 'HelloWorldController::index');
 ```
-\
+
 ### Controllers
 Controllers should be added to [App/Controllers/](App/Controllers/)
-
 `App/Controllers/HelloWorldController.php`:
 
 ```php
@@ -39,10 +37,9 @@ class HelloWorldController {
 
 }
 ```
-\
+
 ### Views
 Views should be added to [App/Views/](App/Views/)
-
 `App/Views/hello/index.php`:
 
 ```html
@@ -58,7 +55,6 @@ $router->get('/hello', function() {
 ```
 
 Views can also accept parameters
-
 `App/Views/hello/index.php`:
 
 ```html+php
@@ -76,7 +72,6 @@ $router->get('/hello', function() {
 ```
 
 Rendered views will always be inserted into the contents of [App/Views/main.php](App/Views/main.php)
-
 `App/Views/main.php`:
 ```html+php
 <!DOCTYPE html>
@@ -86,7 +81,7 @@ Rendered views will always be inserted into the contents of [App/Views/main.php]
 ...
 </html>
 ```
-\
+
 ### Helpers
 
 #### `redirect()`
