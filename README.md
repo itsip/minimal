@@ -71,7 +71,7 @@ $router->get('/hello', function() {
 Views can also accept parameters
 
 `App/Views/hello/index.php`:
-```html+php
+```html
 <h1><?php echo $text ?></h1>
 ```
 
@@ -115,7 +115,7 @@ $router->get('/hello', function() { echo active('/hello') ? 'active' : 'inactive
 `active()` is particularly helpful for dynamically displaying content in a view.
 
 For example, to underline a link to the currently loaded page:
-```html+php
+```html
 <a href="/hello" style="text-decoration: <?php echo active('/hello') ? 'underline' : 'none' ?>">
     This text is underlined if link is active
 </a>
