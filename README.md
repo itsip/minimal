@@ -53,6 +53,7 @@ $router->get('/hello', function() {
 ```
 
 Views can also accept parameters
+
 `App/Views/hello/index.php`:
 
 ```html+php
