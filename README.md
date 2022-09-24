@@ -39,8 +39,6 @@ Views should be added to [App/Views/](App/Views/)
 <h1><?php echo $text ?></h1>
 ```
 
-To return this view with `$text`
-
 `App/Controllers/HelloWorldController.php`:
 
 ```php
@@ -57,3 +55,14 @@ class HelloWorldController {
 }
 ```
 
+Rendered views will always be inserted into the contents of [App/Views/main.php](App/Views/main.php)
+
+`App/Views/main.php`:
+```html+php
+<!DOCTYPE html>
+<html lang="en">
+...
+    <?php include $view . '.php' ?>
+...
+</html>
+```
