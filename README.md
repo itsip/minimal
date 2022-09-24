@@ -14,7 +14,7 @@ Routes should be added to [index.php](index.php)
 $router->get('/hello', function() { echo 'Hello World'; });
 ```
 
-Routes can also accept parameters
+Routes can also accept parameters via function arguments
 ```php
 $router->get('/hello/{name}', function($name) { echo 'Hello ' . $name; });
 ```
@@ -33,6 +33,19 @@ class HelloWorldController {
 
     public static function index() {
         echo 'Hello World';
+    }
+
+}
+```
+
+Controllers can also reference route parameters via function arguments
+`App/Controllers/HelloWorldController.php`:
+
+```php
+class HelloWorldController {
+
+    public static function show($name) {
+        echo 'Hello ' . $name;
     }
 
 }
