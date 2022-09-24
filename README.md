@@ -19,7 +19,7 @@ Routes can also accept parameters via function arguments
 $router->get('/hello/{name}', function($name) { echo 'Hello ' . $name; });
 ```
 
-Alternatively, routes can reference a controller. The following route will look for and call `HelloWorldController::index()` in [App/Controllers/](App/Controllers/)
+Alternatively, routes can reference a controller.
 ```php
 $router->get('/hello', 'HelloWorldController::index');
 ```
