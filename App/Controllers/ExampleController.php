@@ -6,7 +6,11 @@ class ExampleController {
      *
      */
     public static function index() {
-        echo 'Hello World';
+        $text = 'Hello World!';
+
+        View::render('example/index', [
+            'text' => $text,
+        ]);
     }
 }
 ?>

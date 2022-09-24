@@ -1,4 +1,5 @@
 <?php
+include 'Views/View.php';
 
 spl_autoload_register(function($name) {
     if (file_exists('App/Controllers/' . $name . '.php')) {
