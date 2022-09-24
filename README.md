@@ -26,6 +26,7 @@ $router->get('/hello', 'HelloWorldController::index');
 
 ### Controllers
 Controllers should be added to [App/Controllers/](App/Controllers/)
+
 `App/Controllers/HelloWorldController.php`:
 
 ```php
@@ -39,6 +40,7 @@ class HelloWorldController {
 ```
 
 Controllers can also reference route parameters via function arguments
+
 `App/Controllers/HelloWorldController.php`:
 
 ```php
@@ -53,14 +55,13 @@ class HelloWorldController {
 
 ### Views
 Views should be added to [App/Views/](App/Views/)
-`App/Views/hello/index.php`:
 
+`App/Views/hello/index.php`:
 ```html
 <h1>Hello world</h1>
 ```
 
 `index.php`:
-
 ```php
 $router->get('/hello', function() {
     View::render('hello/index');
@@ -68,12 +69,13 @@ $router->get('/hello', function() {
 ```
 
 Views can also accept parameters
-`App/Views/hello/index.php`:
 
+`App/Views/hello/index.php`:
 ```html+php
 <h1><?php echo $text ?></h1>
 ```
 
+`index.php`:
 ```php
 $router->get('/hello', function() {
     $text = 'Hello World';
@@ -85,13 +87,14 @@ $router->get('/hello', function() {
 ```
 
 Rendered views will always be inserted into the contents of [App/Views/main.php](App/Views/main.php)
+
 `App/Views/main.php`:
-```html+php
+```html
 <!DOCTYPE html>
 <html lang="en">
-...
+    ...
     <?php include $view . '.php' ?>
-...
+    ...
 </html>
 ```
 
