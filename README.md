@@ -38,7 +38,7 @@ class HelloWorldController {
 ### Views
 Views should be added to [App/Views/](App/Views/)
 
-`App/hello/index.php`:
+`App/Views/hello/index.php`:
 
 ```html+php
 <h1>Hello world</h1>
@@ -53,7 +53,7 @@ $router->get('/hello', function() {
 ```
 
 Views can also accept parameters
-`App/hello/index.php`:
+`App/Views/hello/index.php`:
 
 ```html+php
 <h1><?php echo $text ?></h1>
