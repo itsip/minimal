@@ -41,23 +41,32 @@ Views should be added to [App/Views/](App/Views/)
 `App/hello/index.php`:
 
 ```html+php
+<h1>Hello world</h1>
+```
+
+`index.php`:
+
+```php
+$router->get('/hello', function() {
+    View::render('hello/index');
+});
+```
+
+Views can also accept parameters
+`App/hello/index.php`:
+
+```html+php
 <h1><?php echo $text ?></h1>
 ```
 
-`App/Controllers/HelloWorldController.php`:
-
 ```php
-class HelloWorldController {
+$router->get('/hello', function() {
+    $text = 'Hello World';
 
-    public static function index() {
-        $text = 'Hello World';
-
-        View::render('hello/index', [
-            'text' => $text,
-        ]);
-    }
-
-}
+    View::render('hello/index', [
+        'text' => $text,
+    ]);
+});
 ```
 
 Rendered views will always be inserted into the contents of [App/Views/main.php](App/Views/main.php)
@@ -70,4 +79,43 @@ Rendered views will always be inserted into the contents of [App/Views/main.php]
     <?php include $view . '.php' ?>
 ...
 </html>
+```
+
+### Helpers
+
+#### `redirect()`
+Redirects to another path
+```php
+$router->get('/hello', function() { redirect('/goodbye'); });
+```
+
+#### `active()`
+Returns whether the current path is active
+```php
+$router->get('/hello', function() { echo active('/hello') ? 'active' : 'inactive'; });
+```
+
+`active()` is particularly helpful for dynamically displaying content in a view.
+
+For example, to underline a link to the currently loaded page:
+```html+php
+<a href="/hello" style="text-decoration: <?php echo active('/hello') ? 'underline' : 'none' ?>">
+    This text is underlined if link is active
+</a>
+```
+
+#### `debug()`
+Prints formatted output for debugging
+```php
+$router->get('/hello/{name}', function() { debug($name); });
+```
+
+#### `dd()`
+Prints formatted output for debugging and immediately exits
+```php
+$router->get('/hello/{name}', function() {
+    dd($name);
+
+    View::render('hello/index'); // View will not render, instead only the debug statement will show
+});
 ```

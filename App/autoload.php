@@ -1,4 +1,5 @@
 <?php
+include 'helpers.php';
 include 'Views/View.php';
 
 spl_autoload_register(function($name) {
