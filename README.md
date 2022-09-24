@@ -3,6 +3,11 @@
 A minimalist PHP framework.
 
 ## Usage
+- [Routing](#routing) 
+- [Controllers](#controllers) 
+- [Views](#views) 
+- [Helpers](#helpers) 
+
 ### Routing
 Routes should be added to [index.php](index.php)
 ```php
@@ -19,7 +24,7 @@ Alternatively, routes can reference a controller. The following route will look 
 ```php
 $router->get('/hello', 'HelloWorldController::index');
 ```
-
+\
 ### Controllers
 Controllers should be added to [App/Controllers/](App/Controllers/)
 
@@ -34,13 +39,13 @@ class HelloWorldController {
 
 }
 ```
-
+\
 ### Views
 Views should be added to [App/Views/](App/Views/)
 
 `App/Views/hello/index.php`:
 
-```html+php
+```html
 <h1>Hello world</h1>
 ```
 
@@ -81,7 +86,7 @@ Rendered views will always be inserted into the contents of [App/Views/main.php]
 ...
 </html>
 ```
-
+\
 ### Helpers
 
 #### `redirect()`
@@ -117,6 +122,6 @@ Prints formatted output for debugging and immediately exits
 $router->get('/hello/{name}', function() {
     dd($name);
 
-    View::render('hello/index'); // View will not render, instead only the debug statement will show
+    View::render('hello/index'); // View will not render
 });
 ```
