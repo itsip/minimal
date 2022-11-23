@@ -1,7 +1,9 @@
 <?php
+
 include 'Route.php';
 
-class Router {
+class Router
+{
     private $routes = [
         'GET' => [],
         'POST' => [],
@@ -14,7 +16,8 @@ class Router {
      * based on the request.
      *
      */
-    public function run() {
+    public function run(): void
+    {
         $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
         $path = ltrim($path, '/\\');
         $path = rtrim($path, '/\\');
@@ -42,7 +45,8 @@ class Router {
      * @param mixed $path
      * @param mixed $function
      */
-    public function get($path, $function) {
+    public function get($path, $function): void
+    {
         $this->addRoute($path, 'GET', $function);
     }
 
@@ -52,7 +56,8 @@ class Router {
      * @param mixed $path
      * @param mixed $function
      */
-    public function post($path, $function) {
+    public function post($path, $function): void
+    {
         $this->addRoute($path, 'POST', $function);
     }
 
@@ -62,7 +67,8 @@ class Router {
      * @param mixed $path
      * @param mixed $function
      */
-    public function put($path, $function) {
+    public function put($path, $function): void
+    {
         $this->addRoute($path, 'PUT', $function);
     }
 
@@ -72,7 +78,8 @@ class Router {
      * @param mixed $path
      * @param mixed $function
      */
-    public function delete($path, $function) {
+    public function delete($path, $function): void
+    {
         $this->addRoute($path, 'DELETE', $function);
     }
 
@@ -84,7 +91,8 @@ class Router {
      * @param mixed $method
      * @param mixed $function
      */
-    private function addRoute($path, $method, $function) {
+    private function addRoute($path, $method, $function): void
+    {
         $path = ltrim($path, '/\\');
         $path = rtrim($path, '/\\');
 
@@ -102,5 +110,3 @@ class Router {
         }
     }
 }
-
-?>

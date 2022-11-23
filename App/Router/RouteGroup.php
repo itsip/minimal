@@ -1,6 +1,7 @@
 <?php
 
-class RouteGroup {
+class RouteGroup
+{
     private $uri;
     private $method;
     private $routes;
@@ -11,7 +12,8 @@ class RouteGroup {
      * @param mixed $uri
      * @param mixed $method
      */
-    public function __construct($uri, $method) {
+    public function __construct($uri, $method)
+    {
         $this->uri = $uri;
         $this->method = $method;
         $this->routes = [];
@@ -24,7 +26,8 @@ class RouteGroup {
      * @param mixed $path
      * @param mixed $action
      */
-    public function addRoute($path, $action) {
+    public function addRoute($path, $action): void
+    {
         preg_match_all('/{(.*?)}/', $path, $matches);
         $numOfSegments = count(explode('/', $path));
 
@@ -47,7 +50,8 @@ class RouteGroup {
      *
      * @param mixed $path
      */
-    public function getRoute($path) {
+    public function getRoute($path): Route
+    {
         $segments = explode('/', $path);
         $numOfSegments = count($segments);
 
@@ -62,5 +66,3 @@ class RouteGroup {
         return $this->routes[$numOfSegments]['dynamic'][0];
     }
 }
-
-?>

@@ -1,8 +1,9 @@
 <?php
+
 include 'helpers.php';
 include 'Views/View.php';
 
-spl_autoload_register(function($name) {
+spl_autoload_register(function ($name) {
     if (file_exists('App/Controllers/' . $name . '.php')) {
         include 'App/Controllers/' . $name . '.php';
     }
@@ -11,5 +12,3 @@ spl_autoload_register(function($name) {
         include 'App/Router/' . $name . '.php';
     }
 });
-
-?>

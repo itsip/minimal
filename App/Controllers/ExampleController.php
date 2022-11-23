@@ -1,11 +1,13 @@
 <?php
 
-class ExampleController {
+class ExampleController
+{
     /**
      * Returns hello world
      *
      */
-    public static function index() {
+    public static function index(): void
+    {
         $text = 'Hello World!';
 
         View::render('example/index', [
@@ -13,4 +15,3 @@ class ExampleController {
         ]);
     }
 }
-?>

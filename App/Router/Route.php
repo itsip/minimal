@@ -1,6 +1,7 @@
 <?php
 
-class Route {
+class Route
+{
     private $path;
     private $action;
 
@@ -10,7 +11,8 @@ class Route {
      * @param mixed $path
      * @param mixed $action
      */
-    public function __construct($path, $action) {
+    public function __construct($path, $action)
+    {
         $this->path = $path;
         $this->action = $action;
     }
@@ -20,7 +22,8 @@ class Route {
      *
      * @param mixed $path
      */
-    public function execute($path) {
+    public function execute($path): void
+    {
         $segments = explode('/', $path);
         $params = array_values(array_intersect_key($segments, $this->getParams()));
         call_user_func_array($this->action, $params);
@@ -29,13 +32,13 @@ class Route {
     /**
      * Parses the path associated with the route to determine the
      * route paramaters associated with this route.
-     *
      */
-    private function getParams() {
+    private function getParams(): array
+    {
         $segments = explode('/', $this->path);
 
         $params = [];
-        foreach($segments as $key => $segment) {
+        foreach ($segments as $key => $segment) {
             if (substr($segment, 0, 1) === '{' && substr($segment, -1) === '}') {
                 $params[$key] = $segment;
             }
@@ -44,5 +47,3 @@ class Route {
         return $params;
     }
 }
-
-?>
