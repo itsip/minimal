@@ -3,20 +3,24 @@
 A minimalist PHP framework.
 
 ## Usage
-- [Routing](#routing) 
-- [Controllers](#controllers) 
-- [Views](#views) 
-- [Helpers](#helpers) 
+- [Routing](#routing)
+- [Controllers](#controllers)
+- [Views](#views)
+- [Helpers](#helpers)
 
 ### Routing
 Routes should be added to [index.php](index.php)
 ```php
-$router->get('/hello', function() { echo 'Hello World'; });
+$router->get('/hello', function () {
+    echo 'Hello World';
+});
 ```
 
 Routes can also accept parameters via function arguments
 ```php
-$router->get('/hello/{name}', function($name) { echo 'Hello ' . $name; });
+$router->get('/hello/{name}', function ($name) {
+    echo 'Hello ' . $name;
+});
 ```
 
 Alternatively, routes can reference a controller.
@@ -30,12 +34,12 @@ Controllers should be added to [App/Controllers/](App/Controllers/)
 `App/Controllers/HelloWorldController.php`:
 
 ```php
-class HelloWorldController {
-
-    public static function index() {
+class HelloWorldController
+{
+    public static function index(): void
+    {
         echo 'Hello World';
     }
-
 }
 ```
 
@@ -44,12 +48,12 @@ Controllers can also reference route parameters via function arguments
 `App/Controllers/HelloWorldController.php`:
 
 ```php
-class HelloWorldController {
-
-    public static function show($name) {
+class HelloWorldController
+{
+    public static function show($name): void
+    {
         echo 'Hello ' . $name;
     }
-
 }
 ```
 
@@ -63,7 +67,7 @@ Views should be added to [App/Views/](App/Views/)
 
 `index.php`:
 ```php
-$router->get('/hello', function() {
+$router->get('/hello', function () {
     View::render('hello/index');
 });
 ```
@@ -77,7 +81,7 @@ Views can also accept parameters
 
 `index.php`:
 ```php
-$router->get('/hello', function() {
+$router->get('/hello', function () {
     $text = 'Hello World';
 
     View::render('hello/index', [
@@ -103,13 +107,17 @@ Rendered views will always be inserted into the contents of [App/Views/main.php]
 #### `redirect()`
 Redirects to another path
 ```php
-$router->get('/hello', function() { redirect('/goodbye'); });
+$router->get('/hello', function () {
+    redirect('/goodbye');
+});
 ```
 
 #### `active()`
 Returns whether the current path is active
 ```php
-$router->get('/hello', function() { echo active('/hello') ? 'active' : 'inactive'; });
+$router->get('/hello', function () {
+    echo active('/hello') ? 'active' : 'inactive';
+});
 ```
 
 `active()` is particularly helpful for dynamically displaying content in a view.
@@ -124,15 +132,16 @@ For example, to underline a link to the currently loaded page:
 #### `debug()`
 Prints formatted output for debugging
 ```php
-$router->get('/hello/{name}', function() { debug($name); });
+$router->get('/hello/{name}', function () {
+    debug($name);
+});
 ```
 
 #### `dd()`
 Prints formatted output for debugging and immediately exits
 ```php
-$router->get('/hello/{name}', function() {
+$router->get('/hello/{name}', function () {
     dd($name);
-
     View::render('hello/index'); // View will not render
 });
 ```
